@@ -1,4 +1,6 @@
-#include <LiquidCrystal.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
 
 #define R1 2000
 #define R2 560
@@ -24,8 +26,8 @@ const byte smiley[8] = {
   B01110,
   B00000,
 };
-const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
-LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 /**
 * caluculate final value of vin before kirshoff bridge
 * @param vADC value on ADC pin
@@ -49,10 +51,12 @@ void printVoltageValue(float value) {
 }
 
 void setup() {
+
+  // set up the LCD's number of columns and rows:
+  lcd.init();
   lcd.createChar(0, Ohm);
   lcd.createChar(1, smiley);
-  // set up the LCD's number of columns and rows:
-  lcd.begin(16, 2);
+  lcd.backlight();
   // Print a message to the LCD.
   lcdStartupScreen();
   delay(2000);
