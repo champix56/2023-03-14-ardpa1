@@ -6,9 +6,19 @@
 
 #define PIN_POT A0
 /**
+*temps minimum d'allumage du feux pieton
+*/
+#define TEMPS_MIN 2000
+/**
+*temps max d'allumage du feux pieton
+*/
+#define TEMPS_MAX 10000
+
+/**
 * get voltage ratio of DAC
 * @param adcValue value of raed value
 * @param vRef voltageRef of arduino
+* @returns converted value of ADC
 */
 float getADCRatio(uint16_t adcValue,float vRef=5){
   return (vRef/1024.0F)*(float)adcValue;
@@ -30,11 +40,13 @@ void loop() {
   if (buttonState>0) {
     Serial.println("button activated");
     int potValue= analogRead(PIN_POT);
-    Serial.print("pot value : ");
-    Serial.println(potValue);
-    float voltageValue=getADCRatio(potValue);
-      Serial.print("voltage value : ");
-    Serial.println(voltageValue);
+    long timeToWaitOnRed=map(potValue, 0,1023,TEMPS_MIN,TEMPS_MAX);
+    // Serial.print("pot value : ");
+    // Serial.println(potValue);
+    // float voltageValue=getADCRatio(potValue);
+    //   Serial.print("voltage value : ");
+    // Serial.println(voltageValue);
+
     digitalWrite(PIN_GREEN, HIGH);
     delay(1000);
 
@@ -45,7 +57,7 @@ void loop() {
     digitalWrite(PIN_RED, HIGH);
     digitalWrite(PIN_YELLOW, LOW);
 
-    delay(1000);
+    delay(timeToWaitOnRed);
     digitalWrite(PIN_RED, LOW);
   } else {
     Serial.println("not activated");
