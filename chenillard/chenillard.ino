@@ -3,6 +3,16 @@
 #define PIN_RED 6
 
 #define PIN_BUTTON 2
+
+#define PIN_POT A0
+/**
+* get voltage ratio of DAC
+* @param adcValue value of raed value
+* @param vRef voltageRef of arduino
+*/
+float getADCRatio(uint16_t adcValue,float vRef=5){
+  return (vRef/1024.0F)*(float)adcValue;
+}
 // the setup function runs once when you press reset or power the board
 void setup() {
   Serial.begin(9600);
@@ -19,6 +29,12 @@ void loop() {
   int buttonState = digitalRead(PIN_BUTTON);
   if (buttonState>0) {
     Serial.println("button activated");
+    int potValue= analogRead(PIN_POT);
+    Serial.print("pot value : ");
+    Serial.println(potValue);
+    float voltageValue=getADCRatio(potValue);
+      Serial.print("voltage value : ");
+    Serial.println(voltageValue);
     digitalWrite(PIN_GREEN, HIGH);
     delay(1000);
 
