@@ -13,6 +13,9 @@ void setup() {
 #ifdef PRESSURE_SENSOR
   setupPressureUnit();
 #endif
+#ifdef TEMPERATURE_SENSOR
+  setupTemperature();
+#endif
   delay(900);
   //tft.fillScreen(TFT_BACKGROUND_COLOR);
   readAndShowDatetime();

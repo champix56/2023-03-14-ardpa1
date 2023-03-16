@@ -3,6 +3,7 @@
 #include "structure.h"
 #include <Adafruit_BMP085.h>
 Adafruit_BMP085 bmp;
+
 bool setupPressureUnit() {
   return bmp.begin();
 }
@@ -11,6 +12,8 @@ bool readPressure() {
   return true;
 }
 #ifdef BMP180_TEMPERATURE
+//dummy start for others components libs complients
+void setupTemperature(){}
 float readTemperature() {
   sensorsValues.temperature = bmp.readTemperature();
   return sensorsValues.temperature;

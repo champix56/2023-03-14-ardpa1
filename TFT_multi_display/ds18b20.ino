@@ -1,4 +1,4 @@
-#ifdef DS18B20
+#ifdef DS18B20_TEMPERATURE
 // Include the libraries we need
 #include <OneWire.h>
 #include <DallasTemperature.h>
@@ -17,6 +17,6 @@ void setupTemperature() {
 float readTemperature() {
   sensors.requestTemperatures();
   sensorsValues.temperature = sensors.getTempCByIndex(0);
-  return sensorsValues.temperatures;
+  return sensorsValues.temperature;
 }
 #endif

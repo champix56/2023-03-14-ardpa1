@@ -6,14 +6,14 @@
     #define DUMMY_TEMPERATURE
   #endif
 
-
-  #if defined(BMP180_TEMPERATURE) && defined(DUMMY_TEMPERATURE)
+//protection multiples sonde de temperatures defined
+  #if (defined(BMP180_TEMPERATURE) && defined(DUMMY_TEMPERATURE))|| (defined(DS18B20_TEMPERATURE)&&defined(BMP180_TEMPERATURE))||(defined(DS18B20_TEMPERATURE)&&defined(DUMMY_TEMPERATURE))
     #undef DUMMY_TEMPERATURE
-    #define BMP180_TEMPERATURE
+    #undef BMP180_TEMPERATURE
   #endif
 
 
-  #if defined(BMP180_TEMPERATURE) || defined(DUMMY_TEMPERATURE)
+  #if defined(BMP180_TEMPERATURE) || defined(DUMMY_TEMPERATURE)||defined (DS18B20_TEMPERATURE)
     #define TEMPERATURE_SENSOR
   #endif
   #if defined(BMP180)
