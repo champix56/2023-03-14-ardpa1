@@ -2,7 +2,10 @@
 
 #include <DS1307RTC.h>
 #include <Timelib.h>
+#include "config.h"
+#include "structure.h"
 
+struct SensorsValues sensorsValues;
 #include "tft_positions.h"
 #include <Adafruit_GFX.h>     // Core graphics library
 #include <Adafruit_ST7735.h>  // Hardware-specific library for ST7735
