@@ -19,4 +19,7 @@
   #if defined(BMP180)
     #define PRESSURE_SENSOR
   #endif
+  #if defined(ST7735)
+    #define OUTPUT_ACTIONNER
+  #endif
 #endif

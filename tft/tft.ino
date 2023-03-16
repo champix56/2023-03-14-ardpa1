@@ -77,7 +77,7 @@ float calculateVin(uint16_t vADC) {
 }
 void loop() {
   
-  setFloatValueInCadre(CADRE_A0_X, CADRE_A0_Y,CADRE_GENERIC_W, CADRE_GENERIC_H, calculateVin(analogRead(PIN_VOLTMETRE)),CADRE_GENERIC_VALUE_PERCISION);
+  setFloatValueInCadre(CADRE_A0_X, CADRE_A0_Y,CADRE_GENERIC_W, CADRE_GENERIC_H, calculateVin(analogRead(PIN_VOLTMETRE)),CADRE_G ENERIC_VALUE_PERCISION);
     setFloatValueInCadre(CADRE_A1_X, CADRE_A1_Y,CADRE_GENERIC_W, CADRE_GENERIC_H, calculateVin(analogRead(A1)),CADRE_GENERIC_VALUE_PERCISION);
   delay(800);
   // put your main code here, to run repeatedly:
