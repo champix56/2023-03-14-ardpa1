@@ -1,3 +1,5 @@
+#include <DS1307RTC.h>
+#include <Timelib.h>
 #include "tft_positions.h"
 #include <Adafruit_GFX.h>     // Core graphics library
 #include <Adafruit_ST7735.h>  // Hardware-specific library for ST7735
@@ -14,9 +16,11 @@ void setup() {
   tft.initR(INITR_BLACKTAB);
   screenSetup();
   delay(900);
+  readAndShowDatetime();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+ readAndShowDatetime();
+  delay(1000);
 
 }
