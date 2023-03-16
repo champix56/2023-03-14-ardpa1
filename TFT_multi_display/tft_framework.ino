@@ -12,9 +12,9 @@ void writeDateTime(tmElements_t tm) {
   tft.setTextColor(ST77XX_WHITE);
   sprintf(buffer, "%02d/%02d", tm.Day, tm.Month);
   tft.print(buffer);
-  tft.setCursor(105, 1); 
+  tft.setCursor(101, 1); 
   tft.print(tmYearToCalendar(tm.Year));
-  tft.setCursor(tft.width() / 2 - 30, 1);
+  tft.setCursor(tft.width() / 2 - 28, 1);
   tft.setTextSize(2);
   sprintf(buffer, "%02d:%02d", tm.Hour, tm.Minute);
   tft.print(buffer);
