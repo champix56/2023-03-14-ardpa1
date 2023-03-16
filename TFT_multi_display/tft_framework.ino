@@ -2,18 +2,22 @@
 
 void makeBandeau() {
   tft.fillRect(0, 0, tft.width(), 10, ST77XX_PINK);
-  tft.fillRect(tft.width() / 2 - 20, 0, 40, 16, ST77XX_PINK);
+  tft.fillRect(tft.width() / 2 - 31, 0, 62, 16, ST77XX_PINK);
 }
 void writeDateTime(tmElements_t tm) {
   makeBandeau();
   char buffer[11];
-  tft.setCursor(2, 10);
+  tft.setCursor(2, 1);
   tft.setTextSize(1);
   tft.setTextColor(ST77XX_WHITE);
-  sprintf(buffer, "%2d/%2d/%d", tm.Day, tm.Month, tmYearToCalendar(tm.Year));
-  tft.setCursor(tft.width() / 2 - 2, 16);
+  sprintf(buffer, "%02d/%02d", tm.Day, tm.Month);
+  tft.print(buffer);
+  tft.setCursor(105, 1); 
+  tft.print(tmYearToCalendar(tm.Year));
+  tft.setCursor(tft.width() / 2 - 30, 1);
   tft.setTextSize(2);
-  sprintf(buffer, "%2d:%2d", tm.Hour, tm.Minute);
+  sprintf(buffer, "%02d:%02d", tm.Hour, tm.Minute);
+  tft.print(buffer);
 }
 void screenSetup() {
   tft.fillScreen(0x0);

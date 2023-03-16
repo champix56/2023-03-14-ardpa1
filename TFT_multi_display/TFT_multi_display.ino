@@ -16,6 +16,7 @@ void setup() {
   tft.initR(INITR_BLACKTAB);
   screenSetup();
   delay(900);
+  tft.fillScreen(TFT_BACKGROUND_COLOR);
   readAndShowDatetime();
 }
 
