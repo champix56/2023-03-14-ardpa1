@@ -1,14 +1,15 @@
+#include "structure.h"
 #include "config.h"
 #ifdef BMP180
-#include "structure.h"
+
 #include <Adafruit_BMP085.h>
 Adafruit_BMP085 bmp;
 
 bool setupPressureUnit() {
   return bmp.begin();
 }
-bool readPressure() {
-  sensorsValues.pressure = bmp.readPressure() / 100L;
+uint16_t readPressure() {
+  return bmp.readPressure() / 100L;
   return true;
 }
 #ifdef BMP180_TEMPERATURE

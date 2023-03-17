@@ -21,7 +21,7 @@
  OUTPUT
  ***/
   //#define ST7735
-
+#define SDCARD
 //check config for multiple sensor type defined
   #include "config_adv.h"
 #endif
