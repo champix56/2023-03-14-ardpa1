@@ -1,3 +1,4 @@
+#ifdef ST7735
 #include "tft_positions.h"
 
 void makeBandeau() {
@@ -45,3 +46,4 @@ void setFloatValueInCadre(uint8_t x, uint8_t y, uint8_t w, uint8_t h, float valu
   tft.setTextColor(CADRE_VALUE_COLOR);
   tft.print(dtostrf(value, 2, precision, buffer));
 }
+#endif 
